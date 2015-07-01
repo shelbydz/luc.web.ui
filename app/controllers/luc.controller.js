@@ -5,17 +5,16 @@
 
 (function() {
 
-    var blogControllers = angular.module('blogControllers',[]);
+    var lucController = angular.module('lucController',[]);
 
-    blogControllers.controller('blogController', ['$http',
+    lucController.controller('dataController', ['$http',
         function(http){
             var self = this;
-            self.message = 'blog';
+            self.message = 'data';
         }
-
     ]);
 
-    blogControllers.controller('adminController', ['$http',
+    lucController.controller('adminController', ['$http',
         function(http){
             var self = this;
             self.message = 'admin';

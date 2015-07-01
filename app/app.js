@@ -6,7 +6,7 @@
 
 (function() {
 
-    var app = angular.module('blog',['ngRoute', 'blogControllers'])
+    var app = angular.module('blog',['ngRoute', 'lucController'])
         .config(['$routeProvider',
     function ($routeProvider){
         $routeProvider.
@@ -14,12 +14,12 @@
                 templateUrl: 'app/admin/admin.html',
                 controller: 'adminController'
             }).
-            when('/blog', {
-                templateUrl: 'app/blogs/blog.html',
-                controller: 'blogController'
+            when('/data', {
+                templateUrl: 'app/data/grid.html',
+                controller: 'dataController'
             }).
             otherwise({
-                redirect: '/blog'
+                redirect: '/data'
             })
     }]);
 
