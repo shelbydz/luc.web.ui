@@ -17,10 +17,10 @@
             when('/data', {
                 templateUrl: 'app/data/grid.html',
                 controller: 'dataController'
-            }).
-            otherwise({
-                redirect: '/data'
             })
+            //otherwise({
+            //    redirect: '/data'
+            //})
     }]);
 
 } )();
