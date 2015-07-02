@@ -17,10 +17,14 @@
             when('/data', {
                 templateUrl: 'app/data/data.html',
                 controller: 'dataController'
+            }).
+            when('/results', {
+                templateUrl: 'app/data/results.html',
+                controller: 'resultsController'
+        }).
+            otherwise({
+                redirect: '/results'
             })
-            //otherwise({
-            //    redirect: '/data'
-            //})
     }]);
 
 } )();

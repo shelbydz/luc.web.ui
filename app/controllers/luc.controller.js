@@ -44,4 +44,12 @@
             self.message = 'admin';
         }
     ]);
+
+    lucController.controller('resultsController', ['$http',
+        function(http){
+            var self = this;
+            self.message = 'results';
+        }
+    ])
+
 })();

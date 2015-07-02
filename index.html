@@ -6,15 +6,40 @@
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="bower_components/ui-router/src/state.js"></script>
+    <!--<script src="bower_components/ui-router/src/state.js"></script>-->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="app/controllers/luc.controller.js"></script>
 </head>
-<body ng-app="blog" >
+<body ng-app="blog">
+<!-- header controls -->
+<div class="container">
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="fieldSelect">Search Field:</label>
+            <select class="form-control" id="fieldSelect">
+                <option>All</option>
+                <option>Name</option>
+                <option>Air Date</option>
+                <option>Writer</option>
+                <option>Episode #</option>
+            </select>
+            <input type="text" id="search" class="form-control">
+            <button type="reset" class="form-control">Clear</button>
+        </div>
+    </form>
+    <form class="form-inline">
+        <div class="form-group">
+            <a class="btn btn-default" href="#data">Add New</a>
+        </div>
+
+    </form>
+</div>
+
 
 <ul>
     <li><a href="#admin">Admin</a></li>
     <li><a href="#data">Data</a></li>
+    <li><a href="#results">Results</a></li>
 </ul>
 <ng-view></ng-view>
 <script src="app/app.js"></script>
