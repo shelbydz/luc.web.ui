@@ -15,7 +15,7 @@
                 controller: 'adminController'
             }).
             when('/data', {
-                templateUrl: 'app/data/grid.html',
+                templateUrl: 'app/data/data.html',
                 controller: 'dataController'
             })
             //otherwise({

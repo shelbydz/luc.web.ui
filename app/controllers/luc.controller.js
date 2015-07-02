@@ -13,6 +13,7 @@
                 name: "",
                 airDate: new Date(),
                 writer: "",
+                episode: 0,
             };
             var allSongs = {};
 
@@ -35,9 +36,6 @@
                 //TODO: rest call to retrieve data
             }
         }
-
-
-
     ]);
 
     lucController.controller('adminController', ['$http',
