@@ -3,12 +3,12 @@
  * Created by shawn on 5/29/15.
  */
 
-(function() {
+(function () {
 
-    var lucController = angular.module('lucController',[]);
+    var lucController = angular.module('lucController', []);
 
-    lucController.controller('dataController', ['$http',
-        function(http){
+    lucController.controller('dataController', ['$http', '$filter',
+        function (http, filter) {
             var model = {
                 name: "",
                 airDate: new Date(),
@@ -22,33 +22,57 @@
             self.allSongs = allSongs;
             self.message = 'data';
 
-            self.submit = function() {
+            self.submit = function () {
                 //TODO: rest call to submit data
-              console.log('submitted ' + self.model.name + ' '  + self.model.airDate);
+                console.log('submitted ' + self.model.name + ' ' + self.model.airDate);
+                self.model.airDate = filter('date')(self.model.airDate, 'yyyy-MM-dd')
+                var data = angular.toJson(self.model);
+                http.post('http://localhost:5000/episode', data)
+                    .success(function(){
+                        console.log('great success!');
+                    })
+                    .error(function(data, status, headers, config){
+                        console.error('uh oh');
+                    })
+
             };
 
-            self.delete = function(id) {
+            self.delete = function (id) {
                 //TODO: rest call to delete data
                 console.log('deleted ' + id);
             };
 
-            self.retrieve = function() {
+            self.retrieve = function () {
                 //TODO: rest call to retrieve data
             }
         }
     ]);
 
     lucController.controller('adminController', ['$http',
-        function(http){
+        function (http) {
             var self = this;
             self.message = 'admin';
         }
     ]);
 
     lucController.controller('resultsController', ['$http',
-        function(http){
+        function (http) {
             var self = this;
+            var model = [];
+            self.model = model;
             self.message = 'results';
+
+            self.getData = function() {
+                http.get('http://localhost:5000/grid')
+                    .success(function(data){
+                        self.model = data
+                    })
+                    .error(function(data, status, headers, config){
+                        console.error('uh oh!')
+                    })
+            }
+
+            self.getData();
         }
     ])
 
