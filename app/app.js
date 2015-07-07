@@ -6,7 +6,7 @@
 
 (function() {
 
-    var app = angular.module('blog',['ngRoute', 'lucController'])
+    var app = angular.module('blog',['ngRoute', 'lucController', 'ngGrid'])
         .config(['$routeProvider',
     function ($routeProvider){
         $routeProvider.

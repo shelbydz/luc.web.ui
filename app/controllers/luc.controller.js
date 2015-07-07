@@ -55,24 +55,33 @@
         }
     ]);
 
-    lucController.controller('resultsController', ['$http',
-        function (http) {
+    lucController.controller('resultsController', ['$http', '$scope',
+        function (http, scope ) {
             var self = this;
-            var model = [];
-            self.model = model;
+            self.model = [];
             self.message = 'results';
-
+            self.gridOptions = {
+                data: 'vm.model',
+                columnDefs:[
+                    {field:'episodeNumber', displayName:'Number'},
+                    {field:'writer', displayName:'Writer'},
+                    {field:'name', displayName:'Name'},
+                    {field:'airDate', displayName:'Air Date'},
+                ]
+            };
             self.getData = function() {
                 http.get('http://localhost:5000/grid')
                     .success(function(data){
-                        self.model = data
+                        self.model = data;
                     })
                     .error(function(data, status, headers, config){
                         console.error('uh oh!')
                     })
             }
-
             self.getData();
+
+
+            //self.getData();
         }
     ])
 
