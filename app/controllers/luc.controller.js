@@ -13,7 +13,7 @@
                 name: "",
                 airDate: new Date(),
                 writer: "",
-                episode: 0,
+                episodeNumber: 0,
             };
             var allSongs = {};
 
@@ -30,6 +30,7 @@
                 http.post('http://localhost:5000/episode', data)
                     .success(function(){
                         console.log('great success!');
+                        location.reload();
                     })
                     .error(function(data, status, headers, config){
                         console.error('uh oh');
@@ -57,6 +58,7 @@
 
     lucController.controller('resultsController', ['$http', '$scope', '$filter',
         function (http, scope, filter) {
+            var i = 0;
             var self = this;
             self.editable = '<input ng-class=';
             self.model = [];
@@ -100,7 +102,9 @@
             };
 
             scope.$on('ngGridEventEndCellEdit', function(evt){
-                console.log(evt.targetScope.row.entity);
+                console.log("called " + i.toString())
+                i++;
+                //console.log(evt.targetScope.row.entity);
                 updateRow(evt.targetScope.row.entity);
             })
 

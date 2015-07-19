@@ -12,15 +12,15 @@
         $routeProvider.
             when('/admin', {
                 templateUrl: 'app/admin/admin.html',
-                controller: 'adminController'
+                controller: 'adminController as vm'
             }).
             when('/data', {
                 templateUrl: 'app/data/data.html',
-                controller: 'dataController'
+                controller: 'dataController as vm'
             }).
             when('/results', {
                 templateUrl: 'app/data/results.html',
-                controller: 'resultsController'
+                controller: 'resultsController as vm'
         }).
             otherwise({
                 redirect: '/results'
